@@ -1,4 +1,4 @@
-﻿#Kütüphanelerimizi Tanımlıyoruz.
+#Kütüphanelerimizi Tanımlıyoruz.
 from audioop import tomono
 import locale
 import os
@@ -12,7 +12,6 @@ import user
 import commands
 locale.setlocale(locale.LC_ALL, '')
 
-#deneme satiri eklendi.
 #Burada ise fonksiyona verilen metin içerisinde yakalanan metinler komut mu diye kontrol ediliyor 
 def asistan(data):#Eğer yakalanan metin merhaba ise asistan bize Merhaba ... sesini döndürecek.#Buraya daha fazla şey ekleyebilirsiniz.if "merhaba" in data:
     if data=="&&":
