@@ -1,0 +1,27 @@
+{
+    "update":{
+        "isimguncelle":["isim güncelle"],
+        "yasguncelle":["yaşımı güncelle","yaş güncelle"]
+    },
+    "getInfo":{
+        "meslekgetir":["mesleğim nedir"]
+    },
+    "asistanInfo":{
+        "kendinitanit":["fatma kendini tanıt","kendini tanıt","kimsin sen"],
+        "isimsoru" : ["ismin ne","ismin"]
+    },
+    "timeFunctions":{
+        "saatSoru": ["saat kaç","saati söyle"],
+        "tarihSoru":["tarihi söyle", "bugün günlerden ne", "ayın kaçı"],
+        "alarm" : ["alarm kur"]
+    },
+    "search":{
+        "konumAra":["git"],
+        "webAra":["ara"],
+        "musicAra":["çal"],
+        "ceviriYap":["çevir"]
+    },
+    "close":{
+        "kapat":["kapat"]
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "name": "Talha",
+    "surname": "Kalender",
+    "age": "22",
+    "birthdate": "27/11/1998",
+    "school": [
+        "Sakarya Üniversitesi",
+        "Bilgisayar ve Bilişim Bilimleri Fakültesi",
+        "Bilgisayar Mühensiliği"
+    ],
+    "job": "Öğrenci",
+    "hometown": [
+        "Türkiye",
+        "Tokat",
+        "Zile"
+    ]
+}
