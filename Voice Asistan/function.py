@@ -83,4 +83,3 @@ class Function:
                     return self.user.data[key][type]
             module.speak("Bilgi bulunamadı.")    
 
-
