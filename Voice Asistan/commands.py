@@ -56,6 +56,9 @@ class Commands  :
             elif command=="okulguncelle":
                 if self.function.UpdateInfo("university","faculty","department"):
                     self.module.speak("Okul bilgilerini {} olarak güncelledim.".format(self.function.GetInfo("university","faculty","department")))
+            elif command=="meslekguncelle":
+                if self.function.UpdateInfo("job"):
+                    self.module.speak( "Meslek bilgilerini {} olarak güncelledim.".format(self.function.GetInfo("job")))
         #user info
         elif commandType=="getInfo" :
             if command=="meslekgetir" :
@@ -90,7 +93,7 @@ class Commands  :
         #search
         elif commandType=="search":
             if command=="webAra":
-                module.speak("İşte senin için bulduklarım: ")
+                self.module.speak("İşte senin için bulduklarım: ")
                 self.function.Search(search)
             if command=="musicAra":
                 self.function.YoutubePlay(search)

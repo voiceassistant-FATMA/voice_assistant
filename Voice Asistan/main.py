@@ -13,7 +13,7 @@ import commands
 locale.setlocale(locale.LC_ALL, '')
 
 #Burada ise fonksiyona verilen metin içerisinde yakalanan metinler komut mu diye kontrol ediliyor 
-def asistan(data):#Eğer yakalanan metin merhaba ise asistan bize Merhaba ... sesini döndürecek.#Buraya daha fazla şey ekleyebilirsiniz.if "merhaba" in data:
+def asistan(data):
     if data=="&&":
         module.sleep()
         return 1
