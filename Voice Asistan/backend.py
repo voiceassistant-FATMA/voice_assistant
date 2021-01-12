@@ -10,26 +10,47 @@ class Backend:
     
     def __init__(self):
         self.app = coremodule.QCoreApplication(sys.argv)
-    
-            
-    def hear(self):
+        self.sleep_mode = False
+
+    def sleep(self):
+        print("Uyku modunu açmak için ismimi söyle")
+        self.sleep_mode=True
+        command=""
+        while command!="fatma":
+            command=self.hear()
+            command=command.lower()
+        self.speak("Merhaba")
+        self.sleep_mode=False
+    def hear(self,response=""):
+        if response !="":
+            self.speak(response)
+
         with self.mic as source:
             self.r.adjust_for_ambient_noise(source)
             #print("Arka plan gürültüsü:" + str(r.energy_threshold))
-            print("->Fatma Dinliyor...")
+            if self.sleep_mode == False:
+                print("->Fatma Dinliyor...")
             try:
                 ses = self.r.listen(source,timeout=5,phrase_time_limit=5)
                 yazi = self.r.recognize_google(ses, language="tr-tr")
-                return yazi
+                if self.sleep_mode==False:
+                    print("user:"+yazi)
 
             except sr.WaitTimeoutError:
-                print("Dinleme zaman aşımına uğradı")
-
+                if self.sleep_mode==False:
+                    print("Dinleme zaman aşımına uğradı")
+                yazi="&&"
             except sr.UnknownValueError:
-                print("Ne dediğini anlayamadım")
-
+                if self.sleep_mode==False:                
+                    print("Ne dediğini anlayamadım")
+                yazi="&&"
             except sr.RequestError:
-                print("İnternete bağlanamıyorum")
+                if self.sleep_mode==False:
+                    print("İnternete bağlanamıyorum")
+                yazi="&&"
+            finally:
+                return yazi
+
     def playSound(self, audioPath):
         url = coremodule.QUrl.fromLocalFile(audioPath)
         content = multimedia.QMediaContent(url)

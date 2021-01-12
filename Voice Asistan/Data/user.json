@@ -1,17 +1,17 @@
 {
-    "name": "Talha",
+    "name": "Sırma",
     "surname": "Kalender",
-    "age": "22",
+    "age": "30",
     "birthdate": "27/11/1998",
-    "school": [
-        "Sakarya Üniversitesi",
-        "Bilgisayar ve Bilişim Bilimleri Fakültesi",
-        "Bilgisayar Mühensiliği"
-    ],
+    "school": {
+        "university": "Sakarya Üniversitesi",
+        "faculty": "Bilgisayar ve Bilişim Bilimleri Fakültesi",
+        "department": "Bilgisayar Mühensiliği"
+    },
     "job": "Öğrenci",
-    "hometown": [
-        "Türkiye",
-        "Tokat",
-        "Zile"
-    ]
+    "hometown": {
+        "country": "Türkiye",
+        "city": "İstanbul",
+        "district": "Zile"
+    }
 }

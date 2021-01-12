@@ -4,10 +4,12 @@ import os
 from datetime import datetime
 from typing import ContextManager
 import webbrowser
+from bs4 import BeautifulSoup
 import backend
 import time
 import user
 import json
+import requests
 
 locale.setlocale(locale.LC_ALL, '')
 module = backend.Backend()
@@ -16,21 +18,45 @@ class Function:
         self.user=user.User()
     def Save(self):
         self.user.Export()
-    def UpdateInfo(self,type):
-    
-        if type in self.user.data.keys():
-            if type =="name":
-                module.speak("İsmin nedir ?")
-                isim = module.hear()
-                self.user.data["name"]=isim
-            elif type =="surname":
-                module.speak("Soyismin nedir ?")
-                soyisim = module.hear()
-                self.user.data["soyisim"]=soyisim
-            elif type=="age":
-                module.speak("Kaç yaşındasın ?")
-                yas=module.hear()
-                self.user.data["age"]=yas
+
+    def UpdateInfo(self,key,type=None):
+        #key => dış anahtar
+        #type => iç anahtar
+        if type==None:
+            if key in self.user.data.keys():
+                if key =="name":
+                    isim = module.hear("İsmin nedir ?")
+                    self.user.data["name"]=isim
+                elif key =="surname":
+                    soyisim = module.hear("Soyismin nedir ?")
+                    self.user.data["soyisim"]=soyisim
+                elif key=="age":
+                    yas=module.hear("Kaç yaşındasın ?")
+                    self.user.data["age"]=yas
+                elif key=="birthdate":
+                    dogumtarihi=module.hear("Doğum tarihiniz nedir?")
+                    self.user.data["birthdate"]=dogumtarihi
+                else:
+                    module.speak("Bir aksilik oldu.")
+                    return 0
+        else:
+            if key in self.user.data.keys():
+                if type in self.user.data[key].keys():
+                    if key =="school":
+                        if type == "university":
+                            okul=module.hear("Hangi okula gidiyorsunuz?")
+                            self.user.data[key][type]=okul
+                        elif type =="facility":
+                            facility = module.hear("Hangi fakültedesiniz?")
+                            self.user.data[key][type]=facility
+                    elif key == "hometown":
+                        if type == "city":
+                            city=module.hear("Hangi şehirde yaşıyorsunuz?")
+                            self.user.data[key][type]=city
+                    else:
+                        module.speak("Bir aksikilk oldu.")
+                        return 0
+        return 1
     def Clock(self):
         now = datetime.now()
         clk=(now.strftime("%H:%M:%S"))
@@ -41,15 +67,20 @@ class Function:
         date= datetime.strftime(now, '%x')
         return date
         
-    def search_it(self,search):
+    def Search(self,search):
         url="https://www.google.com/search?q="+search
-        module.speak("İşte senin için bulduklarım: ")
         webbrowser.get().open(url)
         
-    
-    def GetInfo(self,type):
-        if type in self.user.data.keys():
-            return self.user.data[type]
+    def GetInfo(self,key,type=None):
+        if type == None:
+            if key in self.user.data.keys():
+                return self.user.data[key]
+            else:
+                module.speak("Bilgi bulunamadı.")
         else:
-            print("Bilgi bulunamadı.")
-            
+            if key in self.user.data.keys():
+                if type in self.user.data[key].keys():
+                    return self.user.data[key][type]
+            module.speak("Bilgi bulunamadı.")    
+
+
