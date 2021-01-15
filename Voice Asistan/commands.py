@@ -75,9 +75,9 @@ class Commands  :
         #time functions
         elif commandType=="timeFunctions" :
             if command=="saatSoru" :
-                self.module.speak ("Şu an saat "+self.function.Clock )  
+                self.module.speak ("Şu an saat "+self.function.Clock() )  
             elif command=="tarihSoru" :
-                self.module.speak ("Bugün: "+self.function.Date)
+                self.module.speak ("Bugün: "+self.function.Date())
         #quick search
         elif commandType=="quickSearch":
             if command=="havaDurumuSoru":
@@ -86,7 +86,7 @@ class Commands  :
         #search
         elif commandType=="search":
             if command=="webAra":
-                module.speak("İşte senin için bulduklarım: ")
+                self.module.speak("İşte senin için bulduklarım: ")
                 self.function.Search(search)
             if command=="musicAra":
                 self.function.YoutubePlay(search)
