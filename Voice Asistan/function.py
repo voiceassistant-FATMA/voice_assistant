@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 from typing import ContextManager
 import webbrowser
-from bs4 import BeautifulSoup
+#from bs4 import BeautifulSoup
 import backend
 import time
 import user
@@ -46,9 +46,9 @@ class Function:
                         if type == "university":
                             okul=module.hear("Hangi okula gidiyorsunuz?")
                             self.user.data[key][type]=okul
-                        elif type =="facility":
-                            facility = module.hear("Hangi fakültedesiniz?")
-                            self.user.data[key][type]=facility
+                        elif type =="faculty":
+                            faculty = module.hear("Hangi fakültedesiniz?")
+                            self.user.data[key][type]=faculty
                     elif key == "hometown":
                         if type == "city":
                             city=module.hear("Hangi şehirde yaşıyorsunuz?")
@@ -82,4 +82,3 @@ class Function:
                 if type in self.user.data[key].keys():
                     return self.user.data[key][type]
             module.speak("Bilgi bulunamadı.")    
-

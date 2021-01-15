@@ -51,7 +51,14 @@ class Commands  :
                 if self.function.UpdateInfo("hometown","city"):
                     self.module.speak("Yaşadığın şehri {} olarak güncelledim.".format(self.function.GetInfo("hometown","city")))
             elif command=="dogumtarihiguncelle":
-                self.function.UpdateInfo("birthdate")
+                if self.function.UpdateInfo("birthdate"):
+                    self.module.speak("Doğum tarihini {} olarak güncelledim.".format(self.function.GetInfo("birthdate")))
+            elif command=="okulguncelle":
+                if self.function.UpdateInfo("university","faculty","department"):
+                    self.module.speak("Okul bilgilerini {} olarak güncelledim.".format(self.function.GetInfo("university","faculty","department")))
+            elif command=="meslekguncelle":
+                if self.function.UpdateInfo("job"):
+                    self.module.speak( "Meslek bilgilerini {} olarak güncelledim.".format(self.function.GetInfo("job")))
         #user info
         elif commandType=="getInfo" :
             if command=="meslekgetir" :
@@ -99,4 +106,3 @@ class Commands  :
             self.module.speak ("Bir şeyler ters gitti" )
             return 0
         return 1
-    
